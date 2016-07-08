@@ -1378,10 +1378,6 @@ namespace Chummer
             }
             else
             {
-                // The user must have specified the path of their PDF application in order to use this functionality.
-                if (GlobalOptions.Instance.PDFAppPath == string.Empty)
-                    return;
-
                 // If the sourcebook was not found, we can't open anything.
                 if (!blnFound)
                     return;
@@ -1391,12 +1387,19 @@ namespace Chummer
                 //string strFilePath = "C:\\Gaming\\Shadowrun\\Books\\Shadowrun 4th ed Anniverary.pdf";
                 if (GlobalOptions._blnOpenPDFsAsURLs)
                 {
+                    // The user must have specified the path of their PDF application in order to use this functionality.
+                    if (GlobalOptions.Instance.URLAppPath == string.Empty)
+                        return;
                     var uri = new System.Uri(strPath, UriKind.Absolute);
                     string strParams = "\"" + uri + "#page=" + intPage.ToString() + "\"";
                     Process.Start(GlobalOptions.Instance.URLAppPath, strParams);
                 }
                 else
                 {
+                    // The user must have specified the path of their PDF application in order to use this functionality.
+                    if (GlobalOptions.Instance.PDFAppPath == string.Empty)
+                        return;
+
                     string strParams;
                     if (GlobalOptions._blnOpenPDFsAsUnix)
                     {
