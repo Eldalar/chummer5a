@@ -6987,15 +6987,8 @@ namespace Chummer
                             objWeaponNodes);
                         if (objSubQuality != null)
                         {
-							if (objXmlAddQuality.Attributes["contributetobp"] != null)
-							{
-								if (objXmlAddQuality.Attributes["contributetobp"].InnerText.ToLower() == "false")
-								{
-									objSubQuality.BP = 0;
-									objSubQuality.ContributeToLimit = false;
-								}
-							}
-							_objCharacter.Qualities.Add(objSubQuality);
+                            objLifeModule.BP -= objSubQuality.BP;
+                            _objCharacter.Qualities.Add(objSubQuality);
                         }
                     }
                 }
@@ -7509,7 +7502,8 @@ namespace Chummer
 						{
 							foreach (TreeNode nodQuality in treQualities.Nodes[0].Nodes)
 							{
-								if (nodQuality.Text.ToString() == objChildQuality.DisplayName)
+								if (nodQuality != null &&
+                                    nodQuality.Text.ToString() == objChildQuality.DisplayName)
 								{
 									nodQuality.Remove();
 								}
