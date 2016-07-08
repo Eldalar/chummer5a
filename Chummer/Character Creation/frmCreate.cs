@@ -7485,7 +7485,18 @@ namespace Chummer
                     }
                 }
             }
-			XmlNode objXmlQuality = objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + objQuality.Name + "\"]");
+
+            XmlNode objXmlQuality;
+            if (objQuality.Type == QualityType.LifeModule)
+            {
+                objXmlQuality =
+                    Quality.GetNodeOverrideable(objQuality.QualityId);
+            }
+            else
+            {
+                objXmlQuality =
+                    objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + objQuality.Name + "\"]");
+            }
 			XmlNodeList objRemoveQualitiesNodeList = objXmlQuality.SelectNodes("addqualities/addquality");
 			if (objRemoveQualitiesNodeList.Count > 0)
 			{
