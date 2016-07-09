@@ -72,11 +72,6 @@
       <name>Masking</name>
       <adept>yes</adept>
       <magician>yes</magician>
-      <required>
-        <oneof>
-          <art>Masking</art>
-        </oneof>
-      </required>
       <source>SR5</source>
       <page>326</page>
     </metamagic>
