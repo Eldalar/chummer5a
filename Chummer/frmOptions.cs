@@ -396,6 +396,7 @@ namespace Chummer
                 newSource.Offset = offset;
                 GlobalOptions.Instance.SourcebookInfo.Add(newSource);
             }
+            OptionsChanged(sender, e);
         }
 
         private void treSourcebook_BeforeCheck(object sender, TreeViewCancelEventArgs e)
