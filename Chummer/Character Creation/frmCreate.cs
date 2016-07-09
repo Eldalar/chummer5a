@@ -15046,7 +15046,8 @@ namespace Chummer
                 // Calculate Free Contacts Points. Free points = (CHA) * 2.
 	            if (_objCharacter.BuildMethod == CharacterBuildMethod.Priority ||
 	                (_objCharacter.BuildMethod == CharacterBuildMethod.Karma && _objOptions.FreeKarmaContacts) ||
-	                _objCharacter.BuildMethod == CharacterBuildMethod.SumtoTen)
+	                _objCharacter.BuildMethod == CharacterBuildMethod.SumtoTen ||
+                    _objCharacter.BuildMethod == CharacterBuildMethod.LifeModule )
 	            {
 		            int intCHA = _objCharacter.CHA.Value;
 					if (_objOptions.UseTotalValueForFreeKnowledge)
